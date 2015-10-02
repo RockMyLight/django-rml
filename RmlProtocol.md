@@ -25,12 +25,14 @@ devices that are screen pixels into a euclidean grid.
 An example of the "DJ" protocol
 
 ```
-{
+[{
 	'timestamp': 1443828473, // seconds since Jan 01 1970. (UTC)
 	'brightness': 255, // new brightness - signed integer
 	'color': #fff, // new color - RGB value
 	'duration': 310, // milliseconds - animation speed
-}
+},
+...
+]
 
 
 ```
