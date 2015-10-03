@@ -20,16 +20,17 @@
     </div><!-- /.row -->
     <div class="row">
       <div class="col-md-7" class="toolbar">
-        <button type="button" class="btn btn-default btn-lg">
+        <button id="jamplay" type="button" class="btn btn-default btn-lg">
           <span class="glyphicon glyphicon-play" aria-hidden="true"></span> 
         </button>
-          <button type="button" class="btn btn-default btn-lg">
+          <button id="jamstop" type="button" class="btn btn-default btn-lg">
           <span class="glyphicon glyphicon-stop" aria-hidden="true"></span> 
         </button>
-      </div>
-      <br>
-      <br>
-      <br>
+
+        <div class="clock" style="height: 0px;margin:2em;"></div>
+
+    </div><!-- /.row -->
+    <div class="row">      
       <br>
       <div class="col-md-7">
         <div id="thegrid"></div>
@@ -41,3 +42,8 @@
 <script src="{% static 'js/jam-grid.js' %}"></script>
 
 {% endblock %}
+
+{% block bottomjs %}
+    <script src="{% static "js/flipclock.min.js" %}"></script>    
+{% endblock %}
+

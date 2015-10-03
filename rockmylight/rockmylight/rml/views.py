@@ -16,7 +16,7 @@ def jam(request):
 
 
 # API part
-
+JUMP_TO_FUTURE = 6  # s
 INTERVAL = 0.5
 NUM_OF_FRAMES = 120
 COLORS = ['#002b36', '#073642', '#586e75', '#657b83',
@@ -44,7 +44,7 @@ def api_dj(request, session_id=1):
     # number of connected clients in the grid
     data['num_of_clients'] = 6
     data['frames'] = []
-    start_time = int(time.time())
+    start_time = int(time.time()) + JUMP_TO_FUTURE
     color = COLORS[0]
     # num_of_frames = NUM_OF_FRAMES
     # for frame_index in range(num_of_frames):
@@ -53,7 +53,7 @@ def api_dj(request, session_id=1):
     for interval in intervals:
         frame = {}
         # interval = frame_index * INTERVAL
-        the_time += interval
+        the_time += interval * 1000
         frame['timestamp'] = the_time
         frame['color'] = color
         color = next_color(color)

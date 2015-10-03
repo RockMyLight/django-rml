@@ -1,27 +1,31 @@
 'use strict';
 
+
+// $(document).ready(function() {
 $(function () {
 
 var Grid = {};
 jQuery.extend(Grid, {
 	// a singleton
-    getInstance: function (id) {
+    getInstance: function (id, cols) {
         if (window._gridTopologyInstance === undefined) {
-            window._gridTopologyInstance = new Grid.Topology(id);
+            window._gridTopologyInstance = new Grid.Topology(id, cols);			
         }
         return window._gridTopologyInstance;
     },
 });
 
 
-Grid.Topology = function (id) {
+Grid.Topology = function (id, cols) {
     // init
     this.containerId = id;
     this.container = $(id);
-    this.cols = 2;
+    this.cols = cols;
     this.cellWidth = 5;
     this.cellHeight = 5;
     this.padding = 1;
+    // time rounding error
+    this.eps = 0.1;
     return this;
 };
 
@@ -42,7 +46,6 @@ jQuery.extend(Grid.Topology.prototype, {
 		        jQuery(el).css("position", "absolute");
 		        jQuery(el).css("left", x + "em");
 		        jQuery(el).css("top", y + "em");
-		        
 		        if ((count % cols) == 0) {
 		            x = 0;
 		            y += cellHeight + padding;
@@ -59,16 +62,79 @@ jQuery.extend(Grid.Topology.prototype, {
     	var cellId = 'cell' + devnum;
     	var html = '<div id="' + cellId + '" class="cell">' + devnum +'</div>';
     	$(this.containerId).append(html);
+    },
+    play: function() {
+    	console.log('play jam');
+    	$.ajax({
+    		cache: false,
+    		dataType: "json",
+    		url: "/api/dj/1", 
+    		success: (function( t, djdata ) {
+  				this.djdata = djdata;
+  				t.step = 0;
+  				t.interval = setInterval((t.looper).bind({}, this),1);	
+  				setInterval((t.stop).bind({}, this),5*60000);	
+  			}).bind({}, this)
+  		});
+    },
+    looper: function(t) {
+    	if (t.step === undefined) {
+    		t.step= 0;
+    	}
+    	var frame = t.djdata.frames[t.step];
+    	if (frame === undefined) {
+    		return;
+    	}
+    	if (Date.now() < frame.timestamp) {
+    		console.log('waiting.. on ' + t.step);
+    		console.log(Date.now());
+    		console.log(frame.timestamp);
+    		return;
+    	}
+
+		console.log('timestamp: ' + frame.timestamp);
+		console.log('now: ' + Date.now());
+		
+		var delta = Math.abs(frame.timestamp - Date.now());
+		console.log(delta);
+		if ( delta < 300) {
+			console.log('assign ' + t.step);
+			$('#thegrid div.cell').css('background-color', frame.color);
+		}
+	   	t.step++;    		
+    },
+    transit: function() {
+
+    },
+    stop: function() {
+    	console.log('stop jam')
+    	clearInterval(this.interval);
     }
 });
 
 // main part
-var grid = Grid.getInstance('#thegrid');
+var grid = Grid.getInstance('#thegrid', 3);
 // grid.align();
-grid.addElem(1);
-grid.addElem(2);
-grid.addElem(3);
-grid.addElem(4);
+for (var i = 0; i < 12 ; i++ ) {
+	grid.addElem(i);
+}
 grid.align();
+var clock;
+$("#jamplay").click(function(){
+	// Instantiate a counter
+	clock = new FlipClock($('.clock'), {
+					clockFace: 'Counter',
+					countdown: false,
+					autoStart: true,
+					time: 6,
+					minimumDigits: 4
+				});
+	grid.play();
+});
+$("#jamstop").click(function(){
+	clock.stop();
+	grid.stop();
+});
 
 });
+
