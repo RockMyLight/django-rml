@@ -15,11 +15,16 @@ offset = 0
 scale = 1
 
 def computeGPSMapper( args ):
-   "takes all know GPS locations and computes the projection on the line "
-   coef = numpy.polyfit(x,y, 2)
-   return [expression]
+  "takes all know GPS locations and computes the projection on the line "
+  x = [0]*len(demoPos)
+  y = [0]*len(demoPos)
+  for i in range(0, len(demoPos)):
+    y[i] = demoPos[i][0]
+    x[i] = demoPos[i][1]
+  coef = numpy.polyfit(x,y, 2)
+  return [expression]
 
 
 def placeOnALine( id, lon, lat ):
-   "returns relative position in range [0,1] "
-   return ((lon*nx + lat*ny) + offset)*scale
+  "returns relative position in range [0,1] "
+  return ((lon*nx + lat*ny) + offset)*scale
