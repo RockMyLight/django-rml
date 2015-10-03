@@ -26,7 +26,7 @@ An example of the "DJ" protocol
 
 GET querry:
 
-`example.com/?id=1234&lat=123124.123123&lon=213123.4232345234`
+`http://www.rockmylight.com/api/dj/?id=1234&lat=123124.123123&lon=213123.4232345234`
 
 
 JSON reply:
