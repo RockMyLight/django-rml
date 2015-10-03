@@ -36,7 +36,7 @@ def next_color(color):
 
 def get_the_jam(session_id):
     d = os.path.dirname
-    jam_path = os.path.join(d(d(d(__file__))), 'jams', str(session_id))
+    jam_path = os.path.join(d(d(__file__)), 'static', 'jams', str(session_id))
     if not os.path.exists(jam_path):
         return None
     intervals_path = os.path.join(jam_path, 'intervals.txt')

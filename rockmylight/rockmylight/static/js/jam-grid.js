@@ -99,7 +99,8 @@ jQuery.extend(Grid.Topology.prototype, {
 		console.log(delta);
 		if ( delta < 300) {
 			console.log('assign ' + t.step);
-			$('#thegrid div.cell').css('background-color', frame.color);
+			//$('#thegrid div.cell').css('background-color', frame.color);
+            $('body').css('background-color', frame.color);
 		}
 	   	t.step++;    		
     },
@@ -115,10 +116,10 @@ jQuery.extend(Grid.Topology.prototype, {
 // main part
 var grid = Grid.getInstance('#thegrid', 3);
 // grid.align();
-for (var i = 0; i < 12 ; i++ ) {
+/*for (var i = 0; i < 12 ; i++ ) {
 	grid.addElem(i);
 }
-grid.align();
+grid.align();*/
 var clock;
 $("#jamplay").click(function(){
 	// Instantiate a counter

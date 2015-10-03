@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 
+{% load static %}
 {% load staticfiles %}
 
 
@@ -11,25 +12,30 @@
   <hr class="jam-divider">
 
     <!-- Three columns of text below the carousel -->
-    <div class="row">
-      <div class="col-md-4">
-        <img src="{% static "jams/" %}">
+    <div class="row" style="margin: 10px 0;">
+      <div class="col-md-3">
+        {% static "" as baseUrl %}
+        <img src="{{ baseUrl }}/jams/{{ session_id }}/logo.png"></img>
       </div>
-       <div class="col-md-3">
+       <div class="col-md-4">
         <h2>{{ jam.meta.artist }}</h2>
         <h3>{{ jam.meta.title }}</h3>
+
+        <div>
+          <hr>
+          <button id="jamplay" type="button" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-play" aria-hidden="true"></span> 
+          </button>
+            <button id="jamstop" type="button" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-stop" aria-hidden="true"></span> 
+          </button>
+        </div>
       </div>
     </div><!-- /.row -->
 
     <div class="row">
       <div class="col-md-7" class="toolbar">
-        <button id="jamplay" type="button" class="btn btn-default btn-lg">
-          <span class="glyphicon glyphicon-play" aria-hidden="true"></span> 
-        </button>
-          <button id="jamstop" type="button" class="btn btn-default btn-lg">
-          <span class="glyphicon glyphicon-stop" aria-hidden="true"></span> 
-        </button>
-
+        
         <div class="clock" style="height: 0px;margin:2em;"></div>
 
     </div><!-- /.row -->
