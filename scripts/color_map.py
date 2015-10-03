@@ -11,7 +11,12 @@
 doWateAtTime = -1 # some big number or -1 to skip
 doPhaseAtTime = -1
 
-def 
+
+
+def toHashColor(color):
+
+  return '#'+''.join(map(chr, triplet)).encode('hex')
+
 
 def phase( args ):
   " "
