@@ -2,7 +2,10 @@
 #
 # needs scipy
 
-# normals
+demoPos = [[0.672308, 0.556435], [0.702773, 0.760115], [0.879798, 0.862075], [0.648783, 0.832054], [0.286069, 0.768317], [0.0742173, 0.497004]]
+
+
+# normals, compute and update with computeGPSMapper
 nx = 1
 ny = 1
 offset = 0
