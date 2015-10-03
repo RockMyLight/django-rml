@@ -1,12 +1,27 @@
-#the-grid .cell  {
-    width: 5em;
-    height: 5em;
-    position: absolute;
-    left: 0em;
-    top: 0em;
-    background: rgb(144, 238, 144);
-    border: 2px solid #d6dadc;
+.jam-divider {
+  margin: 40px 0; /* Space out the Bootstrap <hr> more */
 }
+
+#thegrid {
+  /*background: rgb(144, 238, 144);*/
+  width: 1070px; 
+  height: 600px;
+  /*position: relative;  */
+}
+
+#thegrid .cell  {
+  background: rgb(144, 238, 144);
+  border: 2px solid #d6dadc;
+  -webkit-border-radius: 9px;-moz-border-radius: 9px;border-radius: 9px;
+  text-align: center;
+  font-size: 3em;
+  line-height: 1.5em;
+}
+
+.jam .toolbar {
+  margin: 20px 0;
+}
+
 
 .tables-map {
   position: absolute;

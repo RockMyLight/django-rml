@@ -17,7 +17,11 @@ jQuery.extend(Grid, {
 Grid.Topology = function (id) {
     // init
     this.containerId = id;
-    this.container = $(id); 
+    this.container = $(id);
+    this.cols = 2;
+    this.cellWidth = 5;
+    this.cellHeight = 5;
+    this.padding = 1;
     return this;
 };
 
@@ -26,15 +30,18 @@ jQuery.extend(Grid.Topology.prototype, {
 		var x = 0;
 		var y = 0;
 		var count = 1;
-		jQuery("#" + id).each(function() {
-		    jQuery(this).css("position", "relative");		    
-		    jQuery(this).children("div").each(function() {
-		        jQuery(this).css("width", cellWidth + "em");
-		        jQuery(this).css("height", cellHeight + "em");
-		        jQuery(this).css("position", "absolute");
-		        
-		        jQuery(this).css("left", x + "em");
-		        jQuery(this).css("top", y + "em");
+		var cols = this.cols;
+		var cellWidth = this.cellWidth;
+		var cellHeight = this.cellHeight;
+		var padding = this.padding;
+		jQuery(this.containerId).each(function() {
+			jQuery(this).css("position", "relative");		    
+		    jQuery(this).children("div").each((function(index, el) {
+		        jQuery(el).css("width", cellWidth + "em");
+		        jQuery(el).css("height", cellHeight + "em");
+		        jQuery(el).css("position", "absolute");
+		        jQuery(el).css("left", x + "em");
+		        jQuery(el).css("top", y + "em");
 		        
 		        if ((count % cols) == 0) {
 		            x = 0;
@@ -44,19 +51,24 @@ jQuery.extend(Grid.Topology.prototype, {
 		        }
 		        
 		        count++;
-		    });
+		    }).bind({}));
 		});
 
     },
-    addElem: function() {
-    	var html = '<div class="cell">1</div>';
-    	this.container.append(html);
+    addElem: function(devnum) {
+    	var cellId = 'cell' + devnum;
+    	var html = '<div id="' + cellId + '" class="cell">' + devnum +'</div>';
+    	$(this.containerId).append(html);
     }
 });
 
 // main part
-var grid = Grid.getInstance('the-grid');
+var grid = Grid.getInstance('#thegrid');
 // grid.align();
-grid.addElem();
+grid.addElem(1);
+grid.addElem(2);
+grid.addElem(3);
+grid.addElem(4);
+grid.align();
 
 });
