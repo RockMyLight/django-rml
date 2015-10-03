@@ -35,7 +35,7 @@ JSON reply:
 {
 'num_of_clients': 6, // number of connected clients in the grid
 'frames': [{
-	'timestamp': 1443828473, // seconds since Jan 01 1970. (UTC)
+	'timestamp': 1443828473, // milliseconds since Jan 01 1970. (UTC)
 	'color': #fff, // new color - RGB value
 },
 ...
