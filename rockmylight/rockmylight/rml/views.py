@@ -20,7 +20,7 @@ def jam(request):
 INTERVAL = 0.5
 NUM_OF_FRAMES = 120
 COLORS = ['#002b36', '#073642', '#586e75', '#657b83',
-          '#839496', '#93a1a1', '#]eee8d5', '#fdf6e3']
+          '#839496', '#93a1a1', '#eee8d5', '#fdf6e3']
 
 
 def next_color(color):
