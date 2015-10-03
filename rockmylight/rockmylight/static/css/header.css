@@ -1,0 +1,45 @@
+.sidebar-panel {
+  position: fixed;
+  top: 55px;
+  right: -300px;
+  width: 300px;
+  height: 100%;
+  background: #edeff0;
+  z-index: 10;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #d6dadc;
+}
+
+.sidebar-panel-toggle:hover {
+  text-decoration: none;
+}
+
+.sidebar-panel h4 {
+  margin: 0;
+  padding: 10px 0;
+}
+
+.sidebar-panel ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.sidebar-panel ul li {
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.sidebar-panel ul li:nth-of-type(odd) {
+  -webkit-filter: brightness(0.9);
+  filter: brightness(0.9);
+}
+
+.sidebar-panel ul li:last-of-type {
+  margin-bottom: 0;
+}
+
+.sidebar-panel .panel-body {
+  padding: 5px;
+}

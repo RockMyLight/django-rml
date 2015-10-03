@@ -1,0 +1,74 @@
+.tables-map {
+  height: 600px;
+  border-radius: 5px;
+  border: 1px solid #d6dadc;
+  margin-bottom: 10px;
+}
+
+.tables-map-active {
+  background-color: #f0f0f0;
+}
+
+.tables-panel {
+  height: auto;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #d6dadc;
+}
+
+.tables-list ul, .elements-list ul {
+  margin: 0;
+  padding: 0;
+}
+
+.tables-list ul li, .elements-list ul li {
+  display: inline-block;
+  list-style: none;
+}
+
+.small-padding {
+  padding: 5px;
+}
+
+.small-margin {
+  margin: 0 5px;
+}
+
+.element-icon {
+  background-color: #cccccc;
+  border-radius: 3px;
+}
+
+.element-bar,
+.element-stairs,
+.element-flower {
+  height: 40px;
+  line-height: 40px;
+}
+
+.element-bar {
+  width: 100px;
+}
+
+.element-stairs {
+  width: 70px;
+}
+
+.element-flower {
+  width: 40px;
+}
+
+.element-exit,
+.element-toilet,
+.element-kitchen,
+.element-wall,
+.element-window {
+  width: 70px;
+  height: 20px;
+  line-height: 20px;
+}
+
+.remove-button, .rotate-button {
+  position: absolute;
+}

@@ -1,0 +1,48 @@
+.tables-map {
+  position: absolute;
+  border-radius: 5px;
+  border: 1px solid #d6dadc;
+}
+
+.table-icon {
+  padding: 5px;
+}
+
+.table-icon-reserved {
+  -webkit-filter: brightness(0.8);
+  filter: brightness(0.8);
+}
+
+.element-icon {
+  background-color: #cccccc;
+  border-radius: 3px;
+}
+
+.element-bar,
+.element-stairs,
+.element-flower {
+  height: 40px;
+  line-height: 40px;
+}
+
+.element-bar {
+  width: 100px;
+}
+
+.element-stairs {
+  width: 70px;
+}
+
+.element-flower {
+  width: 40px;
+}
+
+.element-exit,
+.element-toilet,
+.element-kitchen,
+.element-wall,
+.element-window {
+  width: 70px;
+  height: 20px;
+  line-height: 20px;
+}

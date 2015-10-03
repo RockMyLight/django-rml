@@ -1,0 +1,14 @@
+#datepicker {
+  font-size: 14px;
+}
+
+svg {
+  display: block;
+  margin: 0 auto;
+  height: 350px;
+  width: 350px;
+}
+
+.datepicker-center {
+  margin: 0 auto;
+}
