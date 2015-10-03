@@ -1,8 +1,8 @@
 ---
 # tasks file for rml-server
 - include: apache.yml
-# - include: django.yml
-# - include: rml-git.yml
-# - include: rml-pip.yml
-# - include: rml-database.yml
+- include: django.yml
+- include: rml-git.yml
+- include: rml-pip.yml
+- include: rml-database.yml
 

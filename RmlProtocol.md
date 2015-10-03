@@ -42,3 +42,9 @@ JSON reply:
 ]}
 
 ```
+
+## URL Example 2
+
+```
+http://rockmylight.com/api/dj/1/
+```
