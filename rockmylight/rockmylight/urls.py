@@ -19,5 +19,6 @@ from django.contrib import admin
 urlpatterns = patterns(
     '',
     url(r'^$', 'rockmylight.rml.views.main', name='main'),
+    url(r'^jam_session/', 'rockmylight.rml.views.jam', name='jam'),
     url(r'^admin/', include(admin.site.urls)),
 )

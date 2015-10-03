@@ -1,0 +1,14 @@
+- name: Install specific pip packages
+  sudo: yes
+  pip:
+    name: "{{ item }}"
+    state: present
+  with_items:    
+    - django
+    - django-nose
+    # - django-allauth
+    # - django-rest-auth
+    - django-cors-headers
+  tags:
+    - python
+    - django

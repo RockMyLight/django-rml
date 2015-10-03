@@ -1,0 +1,11 @@
+---
+- name: Delete app folder
+  file: path="{{ django_app_dir }}" state=absent
+  sudo: yes
+
+- name: Get the latest code
+  git: repo="https://github.com/RockMyLight/django-rml.git"
+       dest="{{ django_app_dir }}"
+       update=yes
+       clone=yes
+       force=yes
