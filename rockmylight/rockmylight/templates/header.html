@@ -21,21 +21,24 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li><a href="/jam_session">JAM session</a></li>
-                <li><a href="#">Connect device</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>JAM sessions<span class="caret"></span></a>
+                  <ul class="dropdown-menu">                  
+                    <li><a href="/jam_session/1">Crazy Town - Butterfly</a></li>
+                    <li><a href="/jam_session/2">Psy - Gangnam Style</a></li>
+                    <li><a href="/jam_session/2">Deep Purple - Space Truckin'</a></li>
+                  </ul>
+                </li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Download <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
                     <li role="separator" class="divider"></li>
-                    <li class="dropdown-header">Nav header</li>
-                    <li><a href="#">Separated link</a></li>
-                    <li><a href="#">One more separated link</a></li>
+                    <li class="dropdown-header">Github</li>
+                    <li><a href="https://github.com/RockMyLight/android-app">Android app</a></li>
+                    <li><a href="https://github.com/RockMyLight/django-rml">Server side</a></li>
                   </ul>
                 </li>
-                <li><a href="#about">About</a></li>
+                <li style=""><a href="#about">About</a></li>
               </ul>
             </div>
           </div>
