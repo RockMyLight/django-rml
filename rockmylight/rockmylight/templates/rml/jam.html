@@ -12,12 +12,15 @@
 
     <!-- Three columns of text below the carousel -->
     <div class="row">
-      <div class="col-md-7">
-        <h2>Topology of connected devices</h2>
-        <h3>Each device is a single pixel</h3>
+      <div class="col-md-4">
+        <img src="{% static "jams/" %}">
       </div>
-
+       <div class="col-md-3">
+        <h2>{{ jam.meta.artist }}</h2>
+        <h3>{{ jam.meta.title }}</h3>
+      </div>
     </div><!-- /.row -->
+
     <div class="row">
       <div class="col-md-7" class="toolbar">
         <button id="jamplay" type="button" class="btn btn-default btn-lg">

@@ -1,4 +1,5 @@
 import os
+import json
 import time
 from django.shortcuts import render
 from django.http import JsonResponse
@@ -10,8 +11,11 @@ def main(request):
     return render(request, 'rml/main.html', context)
 
 
-def jam(request):
-    context = {}
+def jam(request, session_id=1):
+    context = {
+        'session_id': session_id,
+        'jam': get_the_jam(session_id),
+    }
     return render(request, 'rml/jam.html', context)
 
 
@@ -30,13 +34,26 @@ def next_color(color):
     return COLORS[index + 1]
 
 
-def get_intervals():
+def get_the_jam(session_id):
     d = os.path.dirname
-    intervals_path = os.path.join(d(d(d(__file__))),
-                                  'intervals.txt')
-    values = [float(line.strip().strip(','))
-              for line in open(intervals_path)]
-    return values
+    jam_path = os.path.join(d(d(d(__file__))), 'jams', str(session_id))
+    if not os.path.exists(jam_path):
+        return None
+    intervals_path = os.path.join(jam_path, 'intervals.txt')
+    jam = {}
+    jam['intervals'] = [float(line.strip().strip(','))
+                        for line in open(intervals_path)]
+    logo_path = os.path.join(jam_path, 'logo.png')
+    if os.path.exists(logo_path):
+        jam['logo_path'] = logo_path
+    song_path = os.path.join(jam_path, 'song.mp3')
+    if os.path.exists(song_path):
+        jam['song_path'] = song_path
+    meta_path = os.path.join(jam_path, 'meta.json')
+    if os.path.exists(meta_path):
+        with open(meta_path) as json_file:
+            jam['meta'] = json.load(json_file)
+    return jam
 
 
 def api_dj(request, session_id=1):
@@ -47,8 +64,11 @@ def api_dj(request, session_id=1):
     start_time = int(time.time()) + JUMP_TO_FUTURE
     color = COLORS[0]
     # num_of_frames = NUM_OF_FRAMES
-    # for frame_index in range(num_of_frames):
-    intervals = get_intervals()
+    # for frame_index in range(num_of_frames):jam
+    jam = get_the_jam(session_id)
+    if not jam:
+        return JsonResponse(data)
+    intervals = jam['intervals']
     the_time = start_time * 1000
     for interval in intervals:
         frame = {}
