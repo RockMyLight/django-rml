@@ -1,0 +1,21 @@
+- name: Deploy RML code
+  hosts: rml_servers
+  vars:
+    # turn off/on debug deploy
+    deploy_debug: yes
+    # other vars
+    deploy_user: "{{ ansible_ssh_user }}"
+    app_domain: rockmylight.com
+    django_app_dir: /home/{{ deploy_user }}/rml-app
+    django_dir: "{{ django_app_dir }}/rockmylight"
+    django_wsgi_dir: "{{ django_dir }}/rockmylight"
+    # This makes sense only for non-compile, i.e. DEBUG=True case
+    # Otherwise we just use "dist" produced by grunt
+    django_static_aliases:
+        - bower_components
+        - images
+        - scripts
+        - styles
+        - views
+  roles:
+    - rml-server

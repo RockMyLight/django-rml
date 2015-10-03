@@ -1,0 +1,57 @@
+  # Update packages every hour
+- name: Update all packages to the latest version
+  sudo: yes
+  tags:
+    - update
+  apt: upgrade=safe update_cache=yes cache_valid_time=3600
+
+- name: Install apt packages
+  sudo: yes
+  apt:
+    name: "{{ item }}"
+    state: installed
+  with_items:
+    - git
+    - python-setuptools 
+    - python-dev
+    - build-essential
+    - libmysqlclient-dev
+    - nodejs
+    - npm
+  tags:
+    - python
+    - django
+
+- name: Install pip via easy_install
+  sudo: yes
+  easy_install: name=pip
+
+- name: Install pip packages
+  sudo: yes
+  pip:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - MySQL-python
+    - simplejson
+    - django
+    - django-nose
+    - django-registration-redux
+    - djangorestframework
+  tags:
+    - python
+    - django
+
+- name: Install Bower and Grunt
+  sudo: yes
+  npm:
+    name: "{{ item }}"
+    state: present
+    global: yes
+  with_items:
+    - bower
+    - grunt-cli
+
+- name: Corrections for Grunt
+  sudo: yes
+  file: src=/usr/bin/nodejs dest=/usr/bin/node state=link
