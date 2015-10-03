@@ -1,3 +1,13 @@
+#the-grid .cell  {
+    width: 5em;
+    height: 5em;
+    position: absolute;
+    left: 0em;
+    top: 0em;
+    background: rgb(144, 238, 144);
+    border: 2px solid #d6dadc;
+}
+
 .tables-map {
   position: absolute;
   border-radius: 5px;
