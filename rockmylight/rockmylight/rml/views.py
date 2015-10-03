@@ -38,7 +38,7 @@ def api_dj(request, session_id=1):
     color = COLORS[0]
     for frame_index in range(NUM_OF_FRAMES):
         frame = {}
-        frame['timestamp'] = start_time * 1000 + frame_index * INTERVAL
+        frame['timestamp'] = (start_time + frame_index * INTERVAL) * 1000
         frame['color'] = color
         color = next_color(color)
         data['frames'].append(frame)
