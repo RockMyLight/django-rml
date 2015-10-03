@@ -36,9 +36,7 @@ JSON reply:
 'num_of_clients': 6, // number of connected clients in the grid
 'frames': [{
 	'timestamp': 1443828473, // seconds since Jan 01 1970. (UTC)
-	'brightness': 255, // new brightness - signed integer
 	'color': #fff, // new color - RGB value
-	'duration': 310, // milliseconds - animation speed
 },
 ...
 ]}
