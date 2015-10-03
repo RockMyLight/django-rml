@@ -29,6 +29,10 @@
             <button id="jamstop" type="button" class="btn btn-default btn-lg">
             <span class="glyphicon glyphicon-stop" aria-hidden="true"></span> 
           </button>
+          <audio id="jamaudio" controls>            
+            <source src="{{ baseUrl }}/jams/{{ session_id }}/song.mp3" type="audio/mpeg" />
+            <a href="{{ baseUrl }}/jams/{{ session_id }}/song.mp3">song</a>
+          </audio>
         </div>
       </div>
     </div><!-- /.row -->
@@ -54,5 +58,6 @@
 
 {% block bottomjs %}
     <script src="{% static "js/flipclock.min.js" %}"></script>    
+    <!-- <script src="{% static "js/bootstrap-player.js" %}"></script> -->
 {% endblock %}
 

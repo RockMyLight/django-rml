@@ -131,10 +131,12 @@ $("#jamplay").click(function(){
 					minimumDigits: 4
 				});
 	grid.play();
+    $('#jamaudio').trigger("play");
 });
 $("#jamstop").click(function(){
-	clock.stop();
-	grid.stop();
+    clock.stop();
+    grid.stop();
+    $('#jamaudio').trigger("pause");
 });
 
 });
