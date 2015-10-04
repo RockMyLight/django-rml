@@ -1,6 +1,7 @@
 import os
 import json
 import time
+from datetime import datetime
 from django.shortcuts import render
 from django.http import JsonResponse
 from rockmylight.rml.models import Devices, Jam
@@ -69,7 +70,9 @@ def api_dj(request, session_id=1):
     # number of connected clients in the grid
     data['num_of_clients'] = 6
     data['frames'] = []
-    start_time = int(time.time()) + JUMP_TO_FUTURE
+    # start_time = int(time.time()) + JUMP_TO_FUTURE
+    # start_time = jam.start_time
+    start_time = time.mktime(jam.start_time.timetuple()) + JUMP_TO_FUTURE
     color = COLORS[0]
     # num_of_frames = NUM_OF_FRAMES
     # for frame_index in range(num_of_frames):jam
@@ -103,6 +106,7 @@ def api_dj_auto(request):
 def start_jam(request, session_id=1):
     jam = Jam.get_playing_session()
     jam.playing = True
+    jam.start_time = datetime.now()
     jam.save()
     return JsonResponse({'status': 'ok'})
 

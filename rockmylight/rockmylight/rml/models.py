@@ -1,5 +1,7 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
+from datetime import datetime
+
 
 JAMKEY = 1
 
@@ -8,6 +10,7 @@ JAMKEY = 1
 class Jam(models.Model):
     session_num = models.IntegerField()
     playing = models.BooleanField(default=True)
+    start_time = models.DateTimeField(default=datetime.now)
     # def get_instance(self):
     #     try:
     #         singleton = Jam.objects.get(pk=JAMKEY)
