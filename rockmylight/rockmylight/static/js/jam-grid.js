@@ -121,6 +121,24 @@ var grid = Grid.getInstance('#thegrid', 3);
 }
 grid.align();*/
 var clock;
+
+function breakjam(){
+    $.ajax({
+        cache: false,
+        dataType: "json",
+        url: "/api/stop_jam/1", 
+        success: (function( t, jamdata ) {
+
+            clock.stop();
+            grid.stop();
+            $('#jamaudio').trigger("pause");
+
+        }).bind({}, this)
+    });
+};
+
+$("#jamstop").click(breakjam);
+
 $("#jamplay").click(function(){
     $.ajax({
             cache: false,
@@ -138,27 +156,13 @@ $("#jamplay").click(function(){
                 });
                 grid.play();
                 setTimeout(function(){ $('#jamaudio').trigger("play"); }, 6000);
+                $("#jamaudio").bind('ended', function(){
+                    console.log('stopping jam');
+                    breakjam();
+                });
 
             }).bind({}, this)
-    });
-	
-});
-
-$("#jamstop").click(function(){
-
-    $.ajax({
-        cache: false,
-        dataType: "json",
-        url: "/api/stop_jam/1", 
-        success: (function( t, jamdata ) {
-
-            clock.stop();
-            grid.stop();
-            $('#jamaudio').trigger("pause");
-
-        }).bind({}, this)
-    });
+    });	
 });
 
 });
-
