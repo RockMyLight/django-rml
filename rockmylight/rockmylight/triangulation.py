@@ -20,7 +20,7 @@ y = zip(*demoPos)[1]
 
 # takes position coordinates (lists) and returns
 # [R, mx, my, var_range, min_val, max_val]
-def computeGPSMapper(x,y):
+def computeGPSMapper(x, y):
     # center data set
     mx = numpy.mean(x)
     my = numpy.mean(y)
@@ -46,7 +46,7 @@ def computeGPSMapper(x,y):
 [R, mx, my, var_range, min_val, max_val] = computeGPSMapper(x,y)
 
 
-def placeOnALine( id, lon, lat ):
+def placeOnALine(id, lon, lat):
     "returns relative position in range [0,1] "
     cx = (lon - mx) / var_range
     cy = (lat - my) / var_range

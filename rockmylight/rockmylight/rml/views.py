@@ -80,3 +80,7 @@ def api_dj(request, session_id=1):
         data['frames'].append(frame)
     repsonse = JsonResponse(data)
     return repsonse
+
+
+def api_dj_auto(request):
+    return api_dj(request, session_id=1)

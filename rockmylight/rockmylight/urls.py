@@ -23,5 +23,7 @@ urlpatterns = patterns(
         name='jam'),
     url(r'^api/dj/(?P<session_id>[0-9]+)/$', 'rockmylight.rml.views.api_dj',
         name='api_dj'),
+    url(r'^api/dj/auto/$', 'rockmylight.rml.views.api_dj_auto',
+        name='api_dj_auto'),
     url(r'^admin/', include(admin.site.urls)),
 )
