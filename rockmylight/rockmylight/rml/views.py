@@ -3,6 +3,7 @@ import json
 import time
 from django.shortcuts import render
 from django.http import JsonResponse
+from rockmylight.rml.models import Devices
 
 
 # Create your views here.
@@ -87,4 +88,10 @@ def api_dj(request, session_id=1):
 
 
 def api_dj_auto(request):
+    uuid = request.GET.get('id', None)
+    lon = request.GET.get('lon', None)
+    lat = request.GET.get('lat', None)
+
+    if uuid is not None and lon is not None and lat is not None:
+        Devices.update_location(uuid, float(lat), float(lon))
     return api_dj(request, session_id=1)
