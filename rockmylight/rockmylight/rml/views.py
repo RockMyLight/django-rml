@@ -11,6 +11,11 @@ def main(request):
     return render(request, 'rml/main.html', context)
 
 
+def about(request):
+    context = {}
+    return render(request, 'rml/about.html', context)
+
+
 def jam(request, session_id=1):
     context = {
         'session_id': session_id,
@@ -23,8 +28,7 @@ def jam(request, session_id=1):
 JUMP_TO_FUTURE = 6  # s
 INTERVAL = 0.5
 NUM_OF_FRAMES = 120
-COLORS = ['#002b36', '#073642', '#586e75', '#657b83',
-          '#839496', '#93a1a1', '#eee8d5', '#fdf6e3']
+COLORS = ['#000000', '#FFFFFF']
 
 
 def next_color(color):
