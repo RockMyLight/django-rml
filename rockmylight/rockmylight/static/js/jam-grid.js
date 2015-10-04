@@ -131,7 +131,7 @@ $("#jamplay").click(function(){
 					minimumDigits: 4
 				});
 	grid.play();
-    $('#jamaudio').trigger("play");
+    setTimeout(function(){ $('#jamaudio').trigger("play"); }, 6000);
 });
 $("#jamstop").click(function(){
     clock.stop();
