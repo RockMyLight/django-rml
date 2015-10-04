@@ -11,6 +11,11 @@ def main(request):
     return render(request, 'rml/main.html', context)
 
 
+def about(request):
+    context = {}
+    return render(request, 'rml/about.html', context)
+
+
 def jam(request, session_id=1):
     context = {
         'session_id': session_id,
