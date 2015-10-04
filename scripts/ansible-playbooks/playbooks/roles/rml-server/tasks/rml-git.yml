@@ -9,3 +9,4 @@
        update=yes
        clone=yes
        force=yes
+       version="gps"

@@ -9,6 +9,8 @@
     # - django-allauth
     # - django-rest-auth
     - django-cors-headers
+    - scipy
+    - numpy
   tags:
     - python
     - django

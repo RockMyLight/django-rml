@@ -10,18 +10,20 @@
 #
 # Functions return: list of [timestamp, color hex]
 
-doWaveAtTime = -1 # some big number or -1 to skip
+doWaveAtTime = -1  # some big number or -1 to skip
 doPhaseAtTime = -1
 
-baseColor = (1.0,1.0,1.0) #white
+baseColor = (1.0, 1.0, 1.0)  # white
 
 phaseDuration = 2000
-waveDuration = 2000 # propagation speed for the wave
+waveDuration = 2000  # propagation speed for the wave
 
 
 #tested
 def toHashColor(color):
-    triplet = (int(color*255*baseColor[0]), int(color*255*baseColor[1]), int(color*255*baseColor[2]))
+    triplet = (int(color*255*baseColor[0]),
+               int(color*255*baseColor[1]),
+               int(color*255*baseColor[2]))
     return '#'+''.join(map(chr, triplet)).encode('hex')
 
 
