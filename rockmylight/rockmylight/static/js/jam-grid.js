@@ -122,21 +122,42 @@ var grid = Grid.getInstance('#thegrid', 3);
 grid.align();*/
 var clock;
 $("#jamplay").click(function(){
-	// Instantiate a counter
-	clock = new FlipClock($('.clock'), {
-					clockFace: 'Counter',
-					countdown: false,
-					autoStart: true,
-					time: 6,
-					minimumDigits: 4
-				});
-	grid.play();
-    setTimeout(function(){ $('#jamaudio').trigger("play"); }, 6000);
+    $.ajax({
+            cache: false,
+            dataType: "json",
+            url: "/api/start_jam/1", 
+            success: (function( t, jamdata ) {
+
+                // Instantiate a counter
+                clock = new FlipClock($('.clock'), {
+                    clockFace: 'Counter',
+                    countdown: false,
+                    autoStart: true,
+                    time: 6,
+                    minimumDigits: 4
+                });
+                grid.play();
+                setTimeout(function(){ $('#jamaudio').trigger("play"); }, 6000);
+
+            }).bind({}, this)
+    });
+	
 });
+
 $("#jamstop").click(function(){
-    clock.stop();
-    grid.stop();
-    $('#jamaudio').trigger("pause");
+
+    $.ajax({
+        cache: false,
+        dataType: "json",
+        url: "/api/stop_jam/1", 
+        success: (function( t, jamdata ) {
+
+            clock.stop();
+            grid.stop();
+            $('#jamaudio').trigger("pause");
+
+        }).bind({}, this)
+    });
 });
 
 });

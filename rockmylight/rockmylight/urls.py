@@ -27,5 +27,13 @@ urlpatterns = patterns(
         name='api_dj'),
     url(r'^about/', 'rockmylight.rml.views.about',
         name='about'),
+
+    url(r'^api/start_jam/(?P<session_id>[0-9]+)/$', 'rockmylight.rml.views.start_jam',
+        name='start_jam'),
+    url(r'^api/jam_is_playing/(?P<session_id>[0-9]+)/$', 'rockmylight.rml.views.jam_is_playing',
+        name='jam_is_playing'),
+    url(r'^api/stop_jam/(?P<session_id>[0-9]+)/$', 'rockmylight.rml.views.stop_jam',
+        name='stop_jam'),
+
     url(r'^admin/', include(admin.site.urls)),
 )

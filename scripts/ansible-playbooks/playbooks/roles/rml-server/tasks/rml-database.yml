@@ -16,6 +16,7 @@
   django_manage: command=makemigrations app_path={{ django_dir }}
 
 - name: Database migrate
+  sudo: yes
   django_manage: command=migrate app_path={{ django_dir }}
 
 - name: Correct write permissions for database

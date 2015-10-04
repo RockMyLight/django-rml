@@ -3,7 +3,7 @@ import json
 import time
 from django.shortcuts import render
 from django.http import JsonResponse
-from rockmylight.rml.models import Devices
+from rockmylight.rml.models import Devices, Jam
 
 
 # Create your views here.
@@ -63,6 +63,9 @@ def get_the_jam(session_id):
 
 def api_dj(request, session_id=1):
     data = {}
+    jam = Jam.get_playing_session()
+    if not jam.playing:
+        return JsonResponse(data)
     # number of connected clients in the grid
     data['num_of_clients'] = 6
     data['frames'] = []
@@ -95,3 +98,24 @@ def api_dj_auto(request):
     if uuid is not None and lon is not None and lat is not None:
         Devices.update_location(uuid, float(lat), float(lon))
     return api_dj(request, session_id=1)
+
+
+def start_jam(request, session_id=1):
+    jam = Jam.get_playing_session()
+    jam.playing = True
+    jam.save()
+    return JsonResponse({'status': 'ok'})
+
+
+def stop_jam(request, session_id=1):
+    jam = Jam.get_playing_session()
+    jam.playing = False
+    jam.save()
+    return JsonResponse({'status': 'ok'})
+
+
+def jam_is_playing(request, session_id=1):
+    jam = Jam.get_playing_session()
+    if jam.playing:
+        return JsonResponse({'status': True})
+    return JsonResponse({'status': False})
