@@ -16,40 +16,28 @@ min_val = 0
 max_val = 0
 R = 0
 
+# takes position coordinates (lists)
+def computeGPSMapper(x,y):
+  # fit a line
+	line_coef = np.polyfit(x, y, 1)
+  theta = -math.atan2(line_coef[0], 1)
+  # translate all coerdinates lower by line_coef[1] 
+  points = [[p[0], p[1] - line_coef[1]] for p in demoPos]
+  # rotation matrix
+  R = [[np.cos(theta), -np.sin(theta)], [np.sin(theta), np.cos(theta)]] 
+  rotated_points = np.dot(R, zip(*points))
+  # normalise
+  rotated_x = rotated_points[0]
+  min_val = min(rotated_x)
+  max_val = max(rotated_x)
+  #final_x = [(x_val - min_val) / (max_val - min_val) for x_val in rotated_x]
 
-line_coef = np.polyfit(x, y, 1)
-theta = -math.atan2(line_coef[0], 1)
-
-# translate all coerdinates lower by line_coef[1] 
-points = [[p[0], p[1] - line_coef[1]] for p in demoPos]
-
-R = [[np.cos(theta), -np.sin(theta)], [np.sin(theta), np.cos(theta)]] # rotation matrix
-
-rotated_points = np.dot(R, zip(*points))
-
-# normalise
-
-rotated_x = rotated_points[0]
-min_val = min(rotated_x)
-max_val = max(rotated_x)
-
-# take x projection
-
-final_x = [(x_val - min_val) / (max_val - min_val) for x_val in rotated_x]
-
-
-
-def computeGPSMapper( args ):
-  "takes all know GPS locations and computes the projection on the line "
-  x = [0]*len(demoPos)
-  y = [0]*len(demoPos)
-  for i in range(0, len(demoPos)):
-    y[i] = demoPos[i][0]
-    x[i] = demoPos[i][1]
-  coef = numpy.polyfit(x,y, 2)
-  return [expression]
 
 
 def placeOnALine( id, lon, lat ):
   "returns relative position in range [0,1] "
+  rotated_points = np.dot(R, zip(*points))
   return ((lon*nx + lat*ny) + offset)*scale
+
+
+  
