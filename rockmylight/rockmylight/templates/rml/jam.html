@@ -15,7 +15,7 @@
     <div class="row" style="margin: 10px 0;">
       <div class="col-md-3">
         {% static "" as baseUrl %}
-        <img src="{{ baseUrl }}/jams/{{ session_id }}/logo.png"></img>
+        <img src="{{ baseUrl }}jams/{{ session_id }}/logo.png"></img>
       </div>
        <div class="col-md-4">
         <h2>{{ jam.meta.artist }}</h2>
@@ -30,8 +30,8 @@
             <span class="glyphicon glyphicon-stop" aria-hidden="true"></span> 
           </button>
           <audio id="jamaudio" controls>            
-            <source src="{{ baseUrl }}/jams/{{ session_id }}/song.mp3" type="audio/mpeg" />
-            <a href="{{ baseUrl }}/jams/{{ session_id }}/song.mp3">song</a>
+            <source src="{{ baseUrl }}jams/{{ session_id }}/song.mp3" type="audio/mpeg" />
+            <a href="{{ baseUrl }}jams/{{ session_id }}/song.mp3">song</a>
           </audio>
         </div>
       </div>
