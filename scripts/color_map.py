@@ -15,14 +15,28 @@ doPhaseAtTime = -1
 
 baseColor = (1.0,1.0,1.0) #white
 
+waveSpeed = 0.1 # propagation speed for the wave
+
 #tested 
 def toHashColor(color):
   triplet = (int(color*255*baseColor[0]), int(color*255*baseColor[1]), int(color*255*baseColor[2]))
   return '#'+''.join(map(chr, triplet)).encode('hex')
 
+
 # tested
 def phase( oldlist ):
   "transforms phase"
+  newlist = [0] * len(oldlist)
+  for i in range(0, len(oldlist)):
+    if oldlist[i][0] > 0.5 :
+      newlist[i] = [oldlist[i][1], toHashColor( abs( oldlist[i][2]-1) ) ]
+    else:
+      newlist[i] = [oldlist[i][1], toHashColor( oldlist[i][2] ) ]
+  return newlist
+
+# not finished
+def wave( oldlist ):
+  "creates wave by injecting new elements"
   newlist = [0] * len(oldlist)
   for i in range(0, len(oldlist)):
     if oldlist[i][0] > 0.5 :
